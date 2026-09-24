@@ -1,0 +1,131 @@
+/'
+TP 3 : Modelisation statique avec UML – 
+Diagrammes de classes 
+'/
+
+'EXO 1 --------- -   -   -   -   -   -   --  -   -  -   -   -   -   -   -   --  -   -   -
+'a) Dans le cadre d’un syst`eme de vente en ligne les livres et les CDs sont des articles. Les clients
+' peuvent commander des articles.
+
+@startuml
+
+class Article {
+    titre
+    prix
+}
+class Livre {
+    auteur
+}
+
+class CD {
+    duree
+}
+Article <|-- Livre
+Article <|-- CD
+Client "0..*" -- "0..1" Article : commander
+
+@enduml
+
+'EXO 1 --------- -   -   -   -   -   -   --  -   -   ---------- -   -   -   -   -   -   --  -   -   -
+'b) Une compagnie a´erienne propose des vols et un vol peut ˆetre propos´e par diff´erentes compagnies
+
+@startuml
+class Compagnie {
+}
+
+class Vol {
+    
+}
+
+
+Compagnie "1..*" -- "0..*" Vol : proposer
+
+@enduml
+
+'EXO 1 --------- -   -   -   -   -   -   --  -   -   ---------- -   -   -   -   -   -   --  -   -   -
+'c) D’apres les textes de loi en 2018, en France deux 
+'personnes peuvent etre mariees et une
+'personne ne peut pas ˆetre mari´ee `a deux autres personnes en mˆeme temps.
+
+@startuml
+class Personne {
+}
+
+Personne "0..1" -- "0..1" Personne : se marier/etre marie
+
+@enduml
+
+'EXO 1 --------- -   -   -   -   -   -   --  -   -   ---------- -   -   -   -   -   -   --  -   -   -
+'d) Voici deux classes ´ecrites en C++ :
+'... 
+' Donnez le diagramme de classes correspondant
+
+@startuml
+class Document {
+   +void imprimer(Imprimante &Out);
+}
+class Imprimante {
+    +string getNom() { return nom; }
+}
+
+Document "0..*" ..> "0..1"  Imprimante 
+
+@enduml
+
+
+'EXO 1 --------- -   -   -   -   -   -   --  -   -   ---------- -   -   -   -   -   -   --  -   -   -
+'e) Un repertoire contient des fichiers. La suppression du r´epertoire 
+'implique la suppression de ses fichiers.
+
+@startuml
+class Repertoire {
+   
+}
+class Fichier {
+    
+}
+
+Repertoire "1" -- "0..*"  Fichier : contenir
+
+@enduml
+
+'EXO 1 --------- -   -   -   -   -   -   --  -   -   ---------- -   -   -   -   -   -   --  -   -   -
+'f) Une pi`ece contient des murs (mais attention : 
+'un mur peut appartenir `a deux pi`eces contigues
+
+@startuml
+class Piece {
+   
+}
+class Mur {
+    
+}
+
+Piece "1..2" o-- "1..*"  Mur : contenir
+@enduml
+
+
+
+'EXO 2 Bibliotheque--------- -   -   -   -   -   -   --  -   -   ---------- -   -   -   -   -   -   --  -   -   -
+@startuml
+
+
+class Adherent {
+   prenom
+   nom
+   
+}
+
+class Etudiant {
+    Numet
+}
+
+class Professeur {
+    Numen
+}
+
+Adherent  ^--   Etudiant 
+Adherent  ^--  Professeur 
+
+@enduml
+
